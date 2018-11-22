@@ -3,22 +3,19 @@
 #include <string.h>
 
 int main (void)
-{	//입력받은 숫자가 메모장에 뜨게 하는 프로그래밍  
-   FILE *fp;
-   char input[100];
-   int i;
-   
-   fp=fopen("sample.txt,","w");
-   
-   
-   for(i=0;i<3;i++)
-   {
-   	printf("input a word : ");
-   	scanf("%s",input);
-   	fprintf(fp, "%s\n", input);
-   }
-   
-   fclose(fp);
-   
-   return 0;
+{
+//파일 읽어서 내용 출력
+
+FILE *fp;
+char input;
+
+fp=fopen("sample.txt,","r");
+
+
+while((input = fgetc(fp))!=EOF) //받은 값이 EOF가 아닐때까지 계속 반복
+{
+	putchar(input); 
+} 
+
+
 }

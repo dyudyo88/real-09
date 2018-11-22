@@ -4,18 +4,20 @@
 
 int main (void)
 {
-//파일 읽어서 내용 출력
+//파일 읽어서 내용 출력 sol2
 
 FILE *fp;
-char input;
+char input[100];
 
-fp=fopen("sample.txt,","r");
+fp=fopen("sample.txt,","r"); //파일의 이름을 정확히 입력해줘야 한다. 
 
-
-while((input = fgetc(fp))!=EOF) //받은 값이 EOF가 아닐때까지 계속 반복
+while( fgets(input,100,fp)!=NULL)
 {
-	putchar(input); 
-} 
+	printf(input);
+}
 
+fclose(fp);
+
+return 0; 
 
 }

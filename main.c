@@ -4,20 +4,30 @@
 
 int main (void)
 {
-//파일 읽어서 내용 출력 sol2
+//파일 복사 프로그램 실습 
+FILE *fp, *fp2;
+char input;
+char original[100];
+char copy[100];
+int i=0;
 
-FILE *fp;
-char input[100];
+printf("original file: ");
+scanf("%s",original);
+printf("copy file : ");
+scanf("%s",copy);
 
-fp=fopen("sample.txt,","r"); //파일의 이름을 정확히 입력해줘야 한다. 
+fp = fopen(original,"r");
+fp2 = fopen(copy,"w");
 
-while( fgets(input,100,fp)!=NULL)
+while( (input=fgetc(fp) ) != EOF)
 {
-	printf(input);
+	fputc(input, fp2);
+	i++;
 }
-
-fclose(fp);
-
-return 0; 
-
+	printf("Copy succeed~ (%i Bytes coied)\n", i);
+	
+	fclose(fp);
+	fclose(fp2);
+	
+	return 0;
 }

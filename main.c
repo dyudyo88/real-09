@@ -4,30 +4,30 @@
 
 int main (void)
 {
-//파일 복사 프로그램 실습 
-FILE *fp, *fp2;
-char input;
-char original[100];
-char copy[100];
-int i=0;
+//단어 검색, strncmp->검색할 단어길이를 제한할 수 있다.
+//strncmp(문자열1, 문자열2, N) N은 길이
+//strlen()함수를 이용하면 길이를 알 수 있음.
 
-printf("original file: ");
-scanf("%s",original);
-printf("copy file : ");
-scanf("%s",copy);
+FILE *fp;
+char word[100]; 
+char filename[100];
+char input[100];
 
-fp = fopen(original,"r");
-fp2 = fopen(copy,"w");
+printf("file namel : ");
+scanf("%s",filename);
 
-while( (input=fgetc(fp) ) != EOF)
+fp = fopen(filename,"r");
+
+printf("input a word to find :");
+scanf("%s",word);
+
+while( fgets(input, 100, fp)!= NULL)
 {
-	fputc(input, fp2);
-	i++;
+	if (strncmp(input, word, strlen(word)) ==0 )
+	{
+		printf("find a word %s\n",input);
+	}
+	
 }
-	printf("Copy succeed~ (%i Bytes coied)\n", i);
 	
-	fclose(fp);
-	fclose(fp2);
-	
-	return 0;
 }

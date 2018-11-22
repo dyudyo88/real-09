@@ -3,17 +3,22 @@
 #include <string.h>
 
 int main (void)
-{
-   char src[100] = "Programming course";
+{	//입력받은 숫자가 메모장에 뜨게 하는 프로그래밍  
+   FILE *fp;
+   char input[100];
+   int i;
    
-   int i=0;
+   fp=fopen("sample.txt,","w");
    
-   while(src[i] !='\0')
+   
+   for(i=0;i<3;i++)
    {
-      i++;
+   	printf("input a word : ");
+   	scanf("%s",input);
+   	fprintf(fp, "%s\n", input);
    }
-   printf("%s (%i)\n", src, i);
-   printf("%i", strlen(src));
+   
+   fclose(fp);
    
    return 0;
 }
